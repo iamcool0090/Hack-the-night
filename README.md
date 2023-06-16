@@ -36,7 +36,7 @@ Feedback and Support:![Dashboard ](https://github.com/iamcool0090/lastrvce/asset
 ![File Explorer](https://github.com/iamcool0090/lastrvce/assets/126415207/2b576625-9433-4e52-b44c-61323028fe4f)
 ![Latex](https://github.com/iamcool0090/lastrvce/assets/126415207/4a27d0e4-0edb-4d79-a523-631a690fd49a)
 ![Planner](https://github.com/iamcool0090/lastrvce/assets/126415207/bc7d8a81-f244-44e6-a9b5-7f978f53cac9)
-![Users](https://github.com/iamcool0090/lastrvce/assets/71261134/547128f3-48a3-43eb-aa5f-15bdc126ef09)
+![Users](https://github.com/iamcool0090/lastrvce/assets/71261134/a767a1cf-84f9-44a9-88fa-b6f0b8f94640)
 
 
 We value your feedback and strive to continuously improve our platform. If you encounter any issues, have suggestions for new features, or require technical support, please don't hesitate to reach out to our dedicated support team at vyomgoyal098@gmail.com.
