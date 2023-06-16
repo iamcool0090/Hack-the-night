@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+<title>{% block title %}Veda-Planner{{i}}{% endblock %}</title>
+{% block sidebar %}{% include 'components/sidebar.html' %}{% endblock sidebar %}
+{% block latex %}
+
+
+{% if latex_enabled %}
+<div class="p-4 sm:ml-64">
+    
+
+    <div class="flex justify-center items-center h-64 mb-4">
+        <a href="#" class="block max-w-xl p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          <h1>Render LaTeX Example</h1>
+      
+          <form method="POST">
+            {% csrf_token %}
+            <textarea name="equation" rows="3" cols="50" class="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Write a comment..." required></textarea><br>
+            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Render LaTeX</button>
+          </form>
+        </a>
+      </div>
+      
+        {% if equation %}
+        <div class="p-4 sm:ml-64">
+            <div class="notebook bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <div class="notebook-line p-4">
+                    <h2 class="text-center">Rendered Equation:</h2>
+                    <p class="text-center">{{ equation }}</p>
+                    <div id="rendered-equation" class="mt-4"></div>
+                </div>
+            </div>
+        </div>
+        
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+        <script>
+            function renderEquation() {
+                var equationText = "{{ equation|escapejs }}";
+                var renderedEquation = document.getElementById("rendered-equation");
+                renderedEquation.textContent = ""; // Clear previous content
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, renderedEquation, equationText]);
+            }
+        </script>
+        {% endif %}
+    
+
+</div>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block sidebar %}{% include 'components/sidebar.html' with quote_text=quote_text quote_author=quote_author %}{% endblock sidebar %}
+{% block content %}
+<div class="p-4 sm:ml-64">
+    <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+            <tr>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    IP Address
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    UID
+                </th>
+            </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+            {% for item in data %}
+            <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    {{ item.ipAddress }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    {{ item.uid }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

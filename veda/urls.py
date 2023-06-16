@@ -23,8 +23,12 @@ urlpatterns = [
 
     path('dashboard/', views.dashboard),
     path('planner/', views.planner),
-    path('file-explorer/', views.file_explorer),
+    path('file-explorer/', views.paths_view),
     path('admin/', admin.site.urls),
+    path('latex/', views.render_latex),
+    path('users/', views.json_table_view),
+
+
     
 
 ]

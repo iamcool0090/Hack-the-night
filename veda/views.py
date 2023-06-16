@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from . import db
 import json
 import random
+import requests
+import time 
 
 def index(request):
     return render(request, 'index.html')
@@ -35,3 +37,33 @@ def file_explorer(request):
     parsed_data = json.loads(json_data)
     
     return render(request, 'file-explorer/index.html', {"search_enabled": True, "quote_widget": False, "data": parsed_data})
+
+
+def render_latex(request):
+    if request.method == 'POST':
+        equation = request.POST.get('equation', '')
+        return render(request, 'components/render_latex.html', {'equation': equation, 'latex_enabled' : True})
+    else:
+        return render(request, 'components/render_latex.html',{'latex_enabled' : True})
+
+
+
+def json_table_view(request):
+    # Fetch JSON data from localhost:8080/getothers
+    response = requests.get('http://localhost:8080/getothers')
+    json_data = response.json()
+
+    # Simulate a delay of 2 seconds
+    time.sleep(2)
+
+    # Render the table using Flowbite
+    return render(request, 'table.html', {'data': json_data})
+
+
+def paths_view(request):
+    response = requests.get('http://localhost:8080/paths')
+    print(response.content)  # Print the response content for debugging
+    paths = response.json()
+    return render(request, 'paths.html', {'paths': paths})
+
+

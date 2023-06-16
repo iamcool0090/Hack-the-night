@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block sidebar %}{% include 'components/sidebar.html' with quote_text=quote_text quote_author=quote_author %}{% endblock sidebar %}
+
+{% block content %}
+<div class="p-4 sm:ml-64">
+    
+    <table class="table w-full border">
+        <thead>
+            <tr>
+                <th class="border-b-2 px-4 py-2">Paths</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for path in paths %}
+            <tr>
+                <td class="border-b px-4 py-2">{{ path }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
