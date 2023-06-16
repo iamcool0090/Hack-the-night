@@ -1,5 +1,176 @@
 {% extends 'base.html' %}
 <title>{% block title %}Veda-Planner{{i}}{% endblock %}</title>
 {% block sidebar %}{% include 'components/sidebar.html' %}{% endblock sidebar %}
-{% block content %}{% include 'components/content-area.html' %}{% endblock content %}
 
+{% block content %}
+<div class="p-4 sm:ml-64">
+
+    <div class="container">
+
+
+        <style>
+            .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+    }
+    
+    h1 {
+        margin-bottom: 20px;
+    }
+    
+    form {
+        display: flex;
+        margin-bottom: 20px;
+    }
+    
+    input[type="text"] {
+        flex-grow: 1;
+        padding: 10px;
+        font-size: 16px;
+    }
+    
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+    
+    ul {
+        list-style-type: none;
+        padding: 0;
+        text-align: left;
+    }
+    
+    li {
+        margin-bottom: 10px;
+    }
+    
+    .delete-btn {
+        margin-left: 10px;
+        color: #ff3d3d;
+        cursor: pointer;
+    }
+    .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    form {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+        flex-grow: 1;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        text-align: left;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+
+    .delete-btn {
+        margin-left: 10px;
+        color: #ff3d3d;
+        cursor: pointer;
+    }
+
+    /* Hover effect and underline for todo items */
+    li:hover {
+        text-decoration: underline;
+    }
+            </style>
+    
+    
+        
+        <h1>Flowbite Todo List</h1>
+        <form id="todo-form">
+            <input type="text" id="todo-input" placeholder="Add a new todo">
+            <button type="submit">Add</button>
+        </form>
+        <ul id="todo-list"></ul>
+    
+    </div>
+    
+    
+        <script type="text/javascript">
+    const todoForm = document.getElementById('todo-form');
+    const todoInput = document.getElementById('todo-input');
+    const todoList = document.getElementById('todo-list');
+    
+    // Array to store todos
+    let todos = [];
+    
+    // Add event listener to form submission
+    todoForm.addEventListener('submit', (e) => {
+        e.preventDefault(); // Prevent form submission
+        const todoText = todoInput.value.trim(); // Remove leading/trailing spaces
+    
+        if (todoText !== '') {
+            // Create new todo object
+            const newTodo = {
+                id: Date.now(),
+                text: todoText,
+            };
+    
+            // Add new todo to array
+            todos.push(newTodo);
+    
+            // Clear input field
+            todoInput.value = '';
+    
+            // Render todos
+            renderTodos();
+        }
+    });
+    
+    // Delete todo
+    function deleteTodo(id) {
+        // Remove todo from array
+        todos = todos.filter(todo => todo.id !== id);
+    
+        // Render todos
+        renderTodos();
+    }
+    
+    // Render todos
+    function renderTodos() {
+        // Clear existing todo list
+        todoList.innerHTML = '';
+    
+        // Generate todo list
+        todos.forEach(todo => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                ${todo.text}
+                <span class="delete-btn" onclick="deleteTodo(${todo.id})">Delete</span>
+            `;
+            todoList.appendChild(li);
+        });
+    }
+    
+        </script>
+
+
+</div>
+
+{% endblock%}

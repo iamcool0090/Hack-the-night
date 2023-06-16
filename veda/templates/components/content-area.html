@@ -1,50 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}Veda-Planner{{i}}{% endblock %}
 
-<div class="p-4 sm:ml-64">
-    
-        <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
+{% block sidebar %}
+    {% include 'components/sidebar.html' %}
+{% endblock sidebar %}
+
+{% block content %}
+    <div class="p-4 sm:ml-64">
+      <div class="container">
+      <table>
+         <tr>
+            <td>
+               <div class="flex items-center justify-start h-48 mb-4 rounded dark:bg-gray-800">
+                  <div id="ww_902e5e3ef3b8b" v='1.3' loc='id' a='{"t":"horizontal","lang":"en","sl_lpl":1,"ids":[],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"image","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#81D4FA","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722"}'>Weather Data Source: <a href="https://meteolongue.com/paris_meteo_25_jours/" id="ww_902e5e3ef3b8b_u" target="_blank">meteolongue.com/paris_meteo_25_jours/</a></div>
+                  <script async src="https://app1.weatherwidget.org/js/?id=ww_902e5e3ef3b8b"></script>
+              </div>
+            </td>
+            <td width="w-full">
+               <div class="flex items-center justify-center h-48 mb-4 rounded dark:bg-gray-800">
+                  <canvas id="myChart" style="width: 100%; max-width: 600px"></canvas>
+  
+                  <script>
+                      const xValues = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
+                      const yValues = [7, 8, 8, 9, 8, 5, 7, 4, 7, 8, 6];
+  
+                      new Chart("myChart", {
+                          type: "line",
+                          data: {
+                              labels: xValues,
+                              datasets: [{
+                                  fill: false,
+                                  lineTension: 0,
+                                  backgroundColor: "rgba(0,0,255,1.0)",
+                                  borderColor: "rgba(0,0,255,0.1)",
+                                  data: yValues
+                              }]
+                          },
+                          options: {
+                              legend: { display: false },
+                              scales: {
+                                  yAxes: [{ ticks: { min: 6, max: 16 } }],
+                              }
+                          }
+                      });
+                  </script>
+            </td>
+
+         </tr>
+         </table>
+
+
+
+
+
+            
             </div>
 
-
-
-
-       <div class="grid grid-cols-2 gap-4 mb-4">
-          <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-             <p class="text-2xl text-gray-400 dark:text-gray-500">
-
-
-
-
-            </p>
-          </div>
-          <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-             <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-          </div>
-          <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-             <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-          </div>
-          <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-             <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-          </div>
-       </div>
-       <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-          <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-       </div>
-       <div class="grid grid-cols-2 gap-4">
-          <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-             <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-          </div>
-          <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-             <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-          </div>
-          <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-             <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-          </div>
-          <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-             <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-          </div>
-       </div>
+        </div>
     </div>
- </div>
- <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
-
+{% endblock %}
